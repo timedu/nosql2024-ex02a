@@ -1,0 +1,101 @@
+
+
+# --
+# Examples
+#
+
+# (0a) Number of persons
+
+qry_0a: >
+  MATCH (:Person) 
+  RETURN COUNT(*) AS person_count
+
+# (0b) Number of movies
+
+qry_0b: >
+  MATCH (:Movie) 
+  RETURN COUNT(*) AS movie_count
+
+
+# --
+# Retrieve data
+#
+
+# (1) In what years have films been released in this millennium?
+
+qry_1: >
+
+
+# (2) Who work as directors?
+
+qry_2: >
+
+
+# (3) Who has followers? 
+
+qry_3: >
+
+
+# (4) How do people with followers relate to movies? 
+
+qry_4: >
+
+
+# (5) What movies have been reviewed? 
+
+qry_5: >
+
+
+# (6) Which of the films has received the best review?
+
+qry_6: >
+
+
+# (7) Which of the actors also work as directors? 
+
+qry_7: >
+
+
+# (8) Who have acted in the films they have directed? 
+
+qry_8: >
+
+
+# (9) Show Jack Nicholson movie taglines. 
+
+qry_9: >
+
+
+# (10) Who are the actors named Bill? 
+
+qry_10: >
+
+
+# --
+# Modify graph
+#
+
+# (1) Add a course
+
+crud_1: >
+
+
+# (2) Add two teachers
+
+crud_2: >
+
+
+# (3) Set a person as responsible teacher of the course
+
+crud_3: >
+
+
+# (4) Add another course and make it a prerequisite for the first
+
+crud_4: >
+
+
+# (5) Remove teachers who are not responsible for courses
+
+crud_5: >
+
