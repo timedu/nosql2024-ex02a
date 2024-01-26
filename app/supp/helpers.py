@@ -25,7 +25,7 @@ _CRUD_TITLES = {
     'crud_2': '(2) Add two teachers',
     'crud_3': '(3) Set a person as responsible teacher of the course',
     'crud_4': '(4) Add another course and make it a prerequisite for the first',
-    'crud_5': '(5) Remove all courses'
+    'crud_5': '(5) Remove teachers who are not responsible for courses'
 }
 
 _CRUD_FB_QRY = {
