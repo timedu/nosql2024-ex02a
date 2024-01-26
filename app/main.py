@@ -71,7 +71,7 @@ def repl():
         except AssertionError:
             print('Usage:{{qry|crud}_<int>|all_{qry|crud}|merge_movie_data|delete_all_data|exit|quit}')
 
-        except CypherSyntaxError as err:
+        except (CypherSyntaxError, FileNotFoundError) as err:
             print(err)
 
         except Exception as err:
