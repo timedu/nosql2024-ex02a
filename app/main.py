@@ -2,9 +2,10 @@
 import traceback
 try: import readline
 except: pass 
+from dotenv import load_dotenv # pyright: ignore
 from os import environ
 from neo4j import GraphDatabase # pyright: ignore
-from neo4j.exceptions import CypherSyntaxError # pyright: ignore
+from neo4j.exceptions import CypherSyntaxError, ConfigurationError # pyright: ignore
 from supp import helpers, config
 
 def repl():
@@ -34,7 +35,13 @@ def repl():
                 break
 
             if not driver: 
-                driver = GraphDatabase.driver(environ['NEO4J_URI'])
+                # driver = GraphDatabase.driver(environ['NEO4J_URI'])
+                auth = (environ.get('NEO4J_USER'), environ.get('NEO4J_PWD')) \
+                       if environ.get('NEO4J_USER') else ()
+                driver = GraphDatabase.driver(
+                    environ.get('NEO4J_URI'),
+                    auth=auth
+                )
 
             if command == 'merge_movie_data':
                 helpers.merge_movie_data(driver)
@@ -71,14 +78,17 @@ def repl():
         except AssertionError:
             print('Usage:{{qry|crud}_<int>|all_{qry|crud}|merge_movie_data|delete_all_data|exit|quit}')
 
-        except (CypherSyntaxError, FileNotFoundError) as err:
+        except (CypherSyntaxError, FileNotFoundError, ConfigurationError) as err:
             print(err)
 
         except Exception as err:
             print(err)
-            traceback.print_exc()
+            # traceback.print_exc()
 
 if __name__ == '__main__':
+
+    load_dotenv()
+    print(f'Using Neo4j in {environ.get("NEO4J_URI")}')
 
     config.set_config()
     repl()
